@@ -1,23 +1,15 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react"
+import { Dropdown } from "./components/dropdown/Dropdown";
 
 function App() {
+  const [selected, setSelected] = useState({})
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App" style={{display: 'flex', justifyContent: 'space-evenly'}}>
+      <Dropdown title={"Selecione seu pokemon favorito"} onSelect={(value) => {setSelected(value)}} />
+      <div className="fav">
+        <h1>Pokemon Favorito</h1>
+        <h2>{selected.name}</h2>
+      </div>
     </div>
   );
 }
